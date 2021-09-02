@@ -1,0 +1,19 @@
+﻿<Window x:Class="Labb_2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Labb_2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="400">
+
+        <StackPanel Margin="10">
+            <Label Margin="5" FontSize="25">Vänd texten</Label>
+            <StackPanel Orientation="Horizontal">
+            <Label Margin="5">Ange en text</Label>
+            <TextBox Name="rutaText" Width="100"></TextBox>
+            </StackPanel>
+            <Button Click="Click_OK" Margin="5">OK</Button>
+            <TextBox Name="omvändRuta"  Margin="5" Height="50" IsReadOnly="True">Texten omvänd</TextBox>
+        </StackPanel>
+</Window>
