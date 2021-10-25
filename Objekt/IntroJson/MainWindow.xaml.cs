@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Reflection.Metadata.Ecma335;
+using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
@@ -6,6 +7,11 @@ using System.Text.RegularExpressions;
 
 namespace IntroJson
 {
+    class Kontaktlistan
+    {
+        public string Namn;
+        public string Mobil;
+    }
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -56,8 +62,13 @@ namespace IntroJson
                 // Fyll på namnet i listan
                 kontaktLista.Add($"{namn}\t{mobil}");
 
-                // Spara ned!
-                File.WriteAllLines(filen, kontaktLista);
+                // Konvertera till JSON
+                // 1. Skapa ett objekt
+                // 2. Skapa ett objekt
+                // 3. Skapa ett objekt
+                Kontakt objekt = new Kontakt();
+                    objekt.Namn = namn;
+                    objekt.Mobil = mobil;
             }
             else
             {
