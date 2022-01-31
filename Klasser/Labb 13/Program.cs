@@ -20,10 +20,12 @@ namespace Labb_13
         static void Main(string[] args)
         {
             List<Namn> lista = new List<Namn>();
+            DateTime idag = DateTime.Now;
             while (true)
             {
                 Namn objekt = new Namn();
 
+                Console.WriteLine("'Enter' för att avsluta");
                 Console.WriteLine("Ange ditt förnamn: ");
                 objekt.Förnamn = Console.ReadLine();
 
@@ -34,6 +36,7 @@ namespace Labb_13
                 }
                 Console.WriteLine("Ange ditt Efternamn");
             }
+            Console.WriteLine($"Sparades {idag}");
         }
     }
 }

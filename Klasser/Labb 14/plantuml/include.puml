@@ -1,0 +1,12 @@
+@startuml
+class Bok {
+    - Titel : string <<get>> <<set>>
+    - Författare : string <<get>> <<set>>
+    - AntalSidor : int <<get>> <<set>>
+    + Bok(_titel:string, _författare:string, _antalSidor:int)
+    + skrivut() : void
+}
+class Program {
+    {static} Main(args:string[]) : void
+}
+@enduml
