@@ -1,0 +1,10 @@
+@startuml
+class Namn {
+    + Förnamn : string <<get>> <<set>>
+    + Efternamn : string <<get>> <<set>>
+    + VisaNamn() : void
+}
+class Program {
+    {static} Main(args:string[]) : void
+}
+@enduml

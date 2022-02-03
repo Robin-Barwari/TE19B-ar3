@@ -6,8 +6,6 @@ namespace Labb_14
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-
             Console.WriteLine("Vad heter boken? ");
             string titel = Console.ReadLine();
             Console.WriteLine("Vad heter författaren? ");
