@@ -24,10 +24,10 @@ namespace TryCatch
                     Console.WriteLine("Du måste mata in förnamn mellanrum efternamn");
                 }
             }
-            catch(System.Exception)
+            catch(ArgumentException e)
             {
 
-                throw;
+                Console.WriteLine(e.Message);
             }
         }
 
