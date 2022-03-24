@@ -10,14 +10,17 @@ namespace TryCatch
             try
             {
                 // Kompakt inmatning
-                Console.WriteLine("Förnamn Efternamn: ");
+                Console.WriteLine("Förnamn Efternamn Lön Antal-timmar: ");
                 string[] input = Console.ReadLine().Split(" ");
                 
-                // Kolla att vi fick två textbitar
-                if (input.Length == 2)
+                // Kolla att vi fick [antal] textbitar
+                if (input.Length == 4)
                 {
                     // Lagra i en instans (objekt)
-                    Person person = new Person(input[0], input[1]);
+                    Arbetare arbetare = new Arbetare(input[0], input[1], input[2], input[3]);
+
+                    // Skriv ut timlön
+                    Console.WriteLine($"Din timlön blir {arbetare.RäknaTimlön()}");
                 }
                 else
                 {
