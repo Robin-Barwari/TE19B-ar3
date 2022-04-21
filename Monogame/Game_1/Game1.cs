@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -10,9 +11,16 @@ namespace Game_1
         private SpriteBatch spriteBatch;
         private Texture2D normalTexture;
         private Texture2D jumpingTexture;
+        private Texture2D crouchTexture;
+        private Texture2D fireballTexture;
+
+        private List<Vector2> fireballs;
+        
+        private int fireballTimer = 120;
         private Vector2 position;
         private Vector2 speed;
         private bool isJumping;
+        private bool isCrouching;
 
         public Game1()
         {
@@ -24,6 +32,7 @@ namespace Game_1
         protected override void Initialize()
         {
             position = new Vector2(300, 200);
+            fireballs = new List<Vector2>();
 
             base.Initialize();
         }
@@ -34,6 +43,8 @@ namespace Game_1
 
             normalTexture = Content.Load<Texture2D>("normal");
             jumpingTexture = Content.Load<Texture2D>("jump");
+            crouchTexture = Content.Load<Texture2D>("crouch");
+            fireballTexture = Content.Load<Texture2D>("fireball");
         }
 
         protected override void Update(GameTime gameTime)
@@ -57,6 +68,26 @@ namespace Game_1
                 speed = new Vector2(0, -5.0f);
                 isJumping = true;
             }
+            if(state.IsKeyDown(Keys.S) && !isJumping)
+            {
+                isCrouching = true;
+            }
+            else
+            {
+                isCrouching = false;
+            }
+
+            //fireballs
+            fireballTimer--;
+            if (fireballTimer <=0)
+            {
+                fireballTimer = 120;
+                fireballs.Add(new Vector2(700, 210));
+            }
+            for (int i = 0; i < fireballs.Count; i++)
+            {
+                fireballs[i] = fireballs[i] + new Vector2(-1, 0);
+            }
 
             base.Update(gameTime);
         }
@@ -71,9 +102,18 @@ namespace Game_1
             {
                 spriteBatch.Draw(jumpingTexture, position, Color.White);   
             }
+            else if(isCrouching)
+            {
+                spriteBatch.Draw(crouchTexture, position, Color.White); 
+            }
             else
             {
                 spriteBatch.Draw(normalTexture, position, Color.White); 
+            }
+
+            foreach (var fireball in fireballs)
+            {
+                spriteBatch.Draw(fireballTexture, fireball, Color.White);
             }
             spriteBatch.End();
 
